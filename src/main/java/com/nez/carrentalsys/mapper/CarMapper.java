@@ -6,6 +6,6 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface CarMapper {
-    CarDTO ToDTO(Car car);
+    CarDTO toDTO(Car car);
     Car toEntity(CarDTO carDTO);
 }
