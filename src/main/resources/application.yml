@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: CarRentalSys
+# H2 Database (in-memory for testing)
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+# JPA settings
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+# H2 Console (to view Database in browser
+  h2:
+    console:
+      enabled: true
