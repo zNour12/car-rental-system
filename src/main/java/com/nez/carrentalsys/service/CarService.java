@@ -9,7 +9,11 @@ import java.util.Optional;
 public interface CarService {
     List<CarDTO> getAllCars();
     Optional<CarDTO> getCarById(Long id);
+
     List<CarDTO> getCarsByStatus(CarStatus status);
+    List<CarDTO> getCarsByBrand(String brand);
+    List<CarDTO> getCarsByYear(int year);
+
     CarDTO saveCar(CarDTO carDTO);
     CarDTO updateCar(Long id, CarDTO carDTO);
     void deleteCar(Long id);

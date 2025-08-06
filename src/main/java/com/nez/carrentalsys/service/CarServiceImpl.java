@@ -34,6 +34,16 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public List<CarDTO> getCarsByBrand(String brand) {
+        return carRepository.findByBrand(brand).stream().map(carMapper::toDTO).toList();
+    }
+
+    @Override
+    public List<CarDTO> getCarsByYear(int year) {
+        return carRepository.findByYear(year).stream().map(carMapper::toDTO).toList();
+    }
+
+    @Override
     public CarDTO saveCar(CarDTO carDTO){
         Car car = carMapper.toEntity(carDTO);
         Car savedCar = carRepository.save(car);
