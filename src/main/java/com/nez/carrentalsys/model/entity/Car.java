@@ -20,6 +20,8 @@ public class Car {
 
     private String brand;
     private String model;
+
+    @Column(name = "car_year")
     private int year;
     private String licensePlate;
     private double pricePerDay;
