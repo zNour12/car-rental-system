@@ -1,19 +1,19 @@
 spring:
   application:
     name: CarRentalSys
-# H2 Database (in-memory for testing)
+
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:postgresql://localhost:5432/carrentalsys
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
 # JPA settings
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: create-drop
     show-sql: true
 # H2 Console (to view Database in browser
-  h2:
-    console:
-      enabled: true
+#  h2:
+#    console:
+#      enabled: true
