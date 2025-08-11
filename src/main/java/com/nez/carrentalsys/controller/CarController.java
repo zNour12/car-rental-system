@@ -3,6 +3,7 @@ package com.nez.carrentalsys.controller;
 import com.nez.carrentalsys.model.dto.CarDTO;
 import com.nez.carrentalsys.model.enums.CarStatus;
 import com.nez.carrentalsys.service.CarService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,13 +50,13 @@ public class CarController {
     }
 
     @PostMapping
-    public ResponseEntity<CarDTO> createCar(@RequestBody CarDTO carDTO) {
+    public ResponseEntity<CarDTO> createCar(@Valid @RequestBody CarDTO carDTO) {
         CarDTO savedCar =  carService.saveCar(carDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCar);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CarDTO> updateCar(@PathVariable Long id, @RequestBody CarDTO carDTO) {
+    public ResponseEntity<CarDTO> updateCar(@PathVariable Long id, @Valid @RequestBody CarDTO carDTO) {
         CarDTO updatedCar = carService.updateCar(id, carDTO);
         return ResponseEntity.ok(updatedCar);
     }
