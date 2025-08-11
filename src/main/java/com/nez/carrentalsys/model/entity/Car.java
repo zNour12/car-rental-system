@@ -18,14 +18,22 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "car_brand")
     private String brand;
+
+    @Column(name = "car_model")
     private String model;
 
     @Column(name = "car_year")
     private int year;
+
+    @Column(name = "car_license_plate")
     private String licensePlate;
+
+    @Column(name = "car_price_per_day")
     private double pricePerDay;
 
+    @Column(name = "car_status")
     @Enumerated(EnumType.STRING)
     private CarStatus status;
 }
