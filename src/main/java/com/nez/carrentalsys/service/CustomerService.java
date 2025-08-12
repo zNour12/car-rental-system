@@ -6,7 +6,7 @@ import com.nez.carrentalsys.model.enums.CustomerStatus;
 import java.util.List;
 import java.util.Optional;
 
-public interface CustomeService {
+public interface CustomerService {
     List<CustomerDTO> getAllCustomers();
     List<CustomerDTO> getCustomerByStatus(CustomerStatus status);
 

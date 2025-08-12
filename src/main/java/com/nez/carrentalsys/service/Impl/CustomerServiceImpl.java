@@ -4,7 +4,7 @@ import com.nez.carrentalsys.mapper.CustomerMapper;
 import com.nez.carrentalsys.model.dto.CustomerDTO;
 import com.nez.carrentalsys.model.enums.CustomerStatus;
 import com.nez.carrentalsys.repository.CustomerRepository;
-import com.nez.carrentalsys.service.CustomeService;
+import com.nez.carrentalsys.service.CustomerService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CustomerServiceImpl implements CustomeService {
+public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
