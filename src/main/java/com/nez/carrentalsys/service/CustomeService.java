@@ -14,6 +14,8 @@ public interface CustomeService {
     Optional<CustomerDTO> getCustomerByEmail(String email);
 
     CustomerDTO saveCustomer(CustomerDTO customerDTO);
-    CustomerDTO updateCustomer(CustomerDTO customerDTO);
+    CustomerDTO updateCustomer(Long id, CustomerDTO customerDTO);
     void deleteCustomer(Long id);
+
+    List<CustomerDTO> searchCustomerByName(String name);
 }

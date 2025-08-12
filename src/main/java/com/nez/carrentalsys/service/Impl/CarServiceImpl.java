@@ -1,10 +1,11 @@
-package com.nez.carrentalsys.service;
+package com.nez.carrentalsys.service.Impl;
 
 import com.nez.carrentalsys.mapper.CarMapper;
 import com.nez.carrentalsys.model.dto.CarDTO;
 import com.nez.carrentalsys.model.entity.Car;
 import com.nez.carrentalsys.model.enums.CarStatus;
 import com.nez.carrentalsys.repository.CarRepository;
+import com.nez.carrentalsys.service.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
