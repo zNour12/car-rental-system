@@ -47,6 +47,14 @@ public class CustomerController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/dlicense/{licenseNumber}")
+    public ResponseEntity<CustomerDTO> getCustomerByLicenseNumber(@PathVariable String licenseNumber) {
+        Optional<CustomerDTO> customer = customerSerice.getCustomerByDriverLicenseNumber(licenseNumber);
+        return customer
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @GetMapping("/search")
     public ResponseEntity<List<CustomerDTO>> searchCustomers(@RequestParam String name) {
         List<CustomerDTO> customers = customerSerice.searchCustomerByName(name);

@@ -33,7 +33,7 @@ public class CustomerDTO {
 
     @NotBlank(message = "Driver license is required")
     @Size(min = 5, max = 20, message = "Driver license must be between 5 and 20 characters")
-    private String driverLicense;
+    private String driverLicenseNumber;
 
     @Past(message = "Date of birth must be in the past")
     @NotNull(message = "Date of birth is required")

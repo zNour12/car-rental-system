@@ -2,6 +2,7 @@ package com.nez.carrentalsys.service.Impl;
 
 import com.nez.carrentalsys.mapper.CustomerMapper;
 import com.nez.carrentalsys.model.dto.CustomerDTO;
+import com.nez.carrentalsys.model.entity.Customer;
 import com.nez.carrentalsys.model.enums.CustomerStatus;
 import com.nez.carrentalsys.repository.CustomerRepository;
 import com.nez.carrentalsys.service.CustomerService;
@@ -25,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository
                 .findAll()
                 .stream()
-                .map(customerMapper::toDto)
+                .map(customerMapper::toDTO)
                 .toList();
     }
 
@@ -34,7 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository
                 .findByStatus(status)
                 .stream().
-                map(customerMapper::toDto)
+                map(customerMapper::toDTO)
                 .toList();
     }
 
@@ -42,31 +43,38 @@ public class CustomerServiceImpl implements CustomerService {
     public Optional<CustomerDTO> getCustomerByID(Long id) {
         return customerRepository
                 .findById(id)
-                .map(customerMapper::toDto);
+                .map(customerMapper::toDTO);
     }
 
     @Override
     public Optional<CustomerDTO> getCustomerByEmail(String email) {
         return customerRepository
                 .findByEmail(email)
-                .map(customerMapper::toDto);
+                .map(customerMapper::toDTO);
+    }
+
+    @Override
+    public Optional<CustomerDTO> getCustomerByDriverLicenseNumber(String driverLicenseNumber) {
+        return customerRepository
+                .findByDriverLicenseNumber(driverLicenseNumber)
+                .map(customerMapper::toDTO);
     }
 
     @Override
     public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
-//        Customer customer = customerMapper.toEntity(customerDTO);
-//        Customer savedCustomer = customerRepository.save(customer);
-//        return customerMapper.toDto(savedCustomer);
-        return customerMapper.toDto(customerRepository.save(customerMapper.toEntity(customerDTO)));
+        Customer customer = customerMapper.toEntity(customerDTO);
+        Customer savedCustomer = customerRepository.save(customer);
+        return customerMapper.toDTO(savedCustomer);
+//        return customerMapper.toDto(customerRepository.save(customerMapper.toEntity(customerDTO)));
     }
 
     @Override
     public CustomerDTO updateCustomer(Long id, CustomerDTO customerDTO) {
         customerDTO.setId(id);
-//        Customer customer = customerMapper.toEntity(customerDTO);
-//        Customer updatedCustomer = customerRepository.save(customer);
-//        return customerMapper.toDto(updatedCustomer);
-        return customerMapper.toDto(customerRepository.save(customerMapper.toEntity(customerDTO)));
+        Customer customer = customerMapper.toEntity(customerDTO);
+        Customer updatedCustomer = customerRepository.save(customer);
+        return customerMapper.toDTO(updatedCustomer);
+//        return customerMapper.toDto(customerRepository.save(customerMapper.toEntity(customerDTO)));
     }
 
     @Override
@@ -79,7 +87,7 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository
                 .findByFirstNameOrLastNameContainingIgnoreCase(name)
                 .stream()
-                .map(customerMapper::toDto)
+                .map(customerMapper::toDTO)
                 .toList();
     }
 

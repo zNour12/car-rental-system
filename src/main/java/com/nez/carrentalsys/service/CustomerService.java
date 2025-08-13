@@ -12,6 +12,7 @@ public interface CustomerService {
 
     Optional<CustomerDTO> getCustomerByID(Long id);
     Optional<CustomerDTO> getCustomerByEmail(String email);
+    Optional<CustomerDTO> getCustomerByDriverLicenseNumber(String driverLicenseNumber);
 
     CustomerDTO saveCustomer(CustomerDTO customerDTO);
     CustomerDTO updateCustomer(Long id, CustomerDTO customerDTO);

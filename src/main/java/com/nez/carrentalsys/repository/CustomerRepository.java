@@ -12,8 +12,6 @@ import java.util.Optional;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-    List<Customer> findByFirstNameContainingIgnoreCase(String firstName);
-    List<Customer> findByLastNameContainingIgnoreCase(String lastName);
 
     List<Customer> findByStatus(CustomerStatus status);
 
