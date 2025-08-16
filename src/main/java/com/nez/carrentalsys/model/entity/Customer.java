@@ -2,17 +2,14 @@ package com.nez.carrentalsys.model.entity;
 
 import com.nez.carrentalsys.model.enums.CustomerStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "customers")
 @Getter
-@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customer {

@@ -2,15 +2,12 @@ package com.nez.carrentalsys.model.dto;
 
 import com.nez.carrentalsys.model.enums.CustomerStatus;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Getter
-@Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerDTO {

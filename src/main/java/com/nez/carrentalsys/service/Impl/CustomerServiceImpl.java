@@ -34,8 +34,8 @@ public class CustomerServiceImpl implements CustomerService {
     public List<CustomerDTO> getCustomerByStatus(CustomerStatus status) {
         return customerRepository
                 .findByStatus(status)
-                .stream().
-                map(customerMapper::toDTO)
+                .stream()
+                .map(customerMapper::toDTO)
                 .toList();
     }
 
@@ -62,19 +62,20 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
-        Customer customer = customerMapper.toEntity(customerDTO);
-        Customer savedCustomer = customerRepository.save(customer);
-        return customerMapper.toDTO(savedCustomer);
-//        return customerMapper.toDto(customerRepository.save(customerMapper.toEntity(customerDTO)));
+//        Customer customer = customerMapper.toEntity(customerDTO);
+//        Customer savedCustomer = customerRepository.save(customer);
+//        return customerMapper.toDTO(savedCustomer);
+        return customerMapper.toDTO(customerRepository.save(customerMapper.toEntity(customerDTO)));
     }
 
     @Override
     public CustomerDTO updateCustomer(Long id, CustomerDTO customerDTO) {
-        customerDTO.setId(id);
-        Customer customer = customerMapper.toEntity(customerDTO);
-        Customer updatedCustomer = customerRepository.save(customer);
-        return customerMapper.toDTO(updatedCustomer);
-//        return customerMapper.toDto(customerRepository.save(customerMapper.toEntity(customerDTO)));
+        customerDTO.builder()
+                .id(id);
+//        Customer customer = customerMapper.toEntity(customerDTO);
+//        Customer updatedCustomer = customerRepository.save(customer);
+//        return customerMapper.toDTO(updatedCustomer);
+        return customerMapper.toDTO(customerRepository.save(customerMapper.toEntity(customerDTO)));
     }
 
     @Override
