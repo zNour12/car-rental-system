@@ -1,6 +1,7 @@
 package com.nez.carrentalsys.model.dto;
 
 import com.nez.carrentalsys.model.enums.RentalStatus;
+import com.nez.carrentalsys.validation.ValidRentalDates;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.FutureOrPresent;
@@ -17,6 +18,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ValidRentalDates
 public class RentalDTO {
 
     private Long id;
