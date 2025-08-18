@@ -4,6 +4,8 @@ import com.nez.carrentalsys.model.enums.CarStatus;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Getter
 @Builder
 @NoArgsConstructor
@@ -30,7 +32,7 @@ public class CarDTO {
 
     @DecimalMin(value = "0.0", inclusive = false, message = "Price must be greater than 0")
     @DecimalMax(value = "10000.0", message = "Price cannot exceed 10,000.0")
-    private double pricePerDay;
+    private BigDecimal pricePerDay;
 
     @NotNull(message = "Status is required")
     private CarStatus status;

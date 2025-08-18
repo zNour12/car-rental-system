@@ -20,7 +20,7 @@ public class CarController {
     private final CarService carService;
 
     @GetMapping
-    public ResponseEntity<List<CarDTO>> getAllCars() {/// //////
+    public ResponseEntity<List<CarDTO>> getAllCars() {
         List<CarDTO> cars = carService.getAllCars();
         return ResponseEntity.ok(cars);
     }

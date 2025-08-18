@@ -4,6 +4,8 @@ import com.nez.carrentalsys.model.enums.CarStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "cars")
 @Getter
@@ -28,7 +30,7 @@ public class Car {
     private String licensePlate;
 
     @Column(name = "car_price_per_day")
-    private double pricePerDay;
+    private BigDecimal pricePerDay;
 
     @Column(name = "car_status")
     @Enumerated(EnumType.STRING)
