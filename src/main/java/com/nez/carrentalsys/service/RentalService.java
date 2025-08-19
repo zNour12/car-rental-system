@@ -13,7 +13,7 @@ public interface RentalService {
     List<RentalDTO> getAllRentals();
     Optional<RentalDTO> getRentalById(/*@Param("id")*/ Long id);
     RentalDTO createRental(RentalDTO rentalDTO);
-    RentalDTO updateRental(RentalDTO rentalDTO);
+    RentalDTO updateRental(Long id,RentalDTO rentalDTO);
     void deleteRental( Long id);
 
     // Filter/Search methods

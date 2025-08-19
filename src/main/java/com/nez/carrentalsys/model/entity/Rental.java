@@ -26,6 +26,9 @@ public class Rental {
     @Column(name = "rental_end_date", nullable = false)
     private LocalDate endDate;
 
+    @Column(name = "rental_actual_return_date")
+    private LocalDate actualReturnDate;
+
     @Column(name = "rental_total_cost", precision = 10, scale = 2)
     private BigDecimal totalCost;
 

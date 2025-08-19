@@ -6,15 +6,13 @@ import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -37,12 +35,12 @@ public class RentalDTO {
     @Future(message = "End date must be in the future")
     private LocalDate endDate;
 
-    private LocalDate returnDate;
+    private LocalDate actualReturnDate;
 
     @DecimalMin(value = "0.0",
             inclusive = false,
             message = "Total cost must be greater than 0.0")
-    private BigDecimal totalPrice;
+    private BigDecimal totalCost;
 
     @NotNull(message = "Rental status is required")
     private RentalStatus status;

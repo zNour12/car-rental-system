@@ -1,5 +1,6 @@
 package com.nez.carrentalsys.repository;
 
+import com.nez.carrentalsys.model.entity.Car;
 import com.nez.carrentalsys.model.entity.Rental;
 import com.nez.carrentalsys.model.enums.RentalStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,4 +24,5 @@ public interface RentalRepository extends JpaRepository<Rental, Long> {
 
     @Query("SELECT r FROM Rental r WHERE r.status = 'ACTIVE' AND r.endDate < :currentDate")
     List<Rental> findOverDueRentals(@Param("currentDate") LocalDate currentDate);
+    Long car(Car car);
 }
