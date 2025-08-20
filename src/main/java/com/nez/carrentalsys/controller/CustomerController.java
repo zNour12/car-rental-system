@@ -17,17 +17,17 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CustomerController {
 
-    private final CustomerService customerSerice;
+    private final CustomerService customerService;
 
     @GetMapping
     public ResponseEntity<List<CustomerDTO>> getAllCustomers() {
-        List<CustomerDTO> customers = customerSerice.getAllCustomers();
+        List<CustomerDTO> customers = customerService.getAllCustomers();
         return ResponseEntity.ok(customers);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable Long id) {
-        Optional<CustomerDTO> customer = customerSerice.getCustomerByID(id);
+        Optional<CustomerDTO> customer = customerService.getCustomerByID(id);
         return customer
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -35,13 +35,13 @@ public class CustomerController {
 
     @GetMapping("/status/{status}")
     public ResponseEntity<List<CustomerDTO>> getCustomerByStatus(@PathVariable CustomerStatus status) {
-        List<CustomerDTO> customers = customerSerice.getCustomerByStatus(status);
+        List<CustomerDTO> customers = customerService.getCustomerByStatus(status);
         return ResponseEntity.ok(customers);
     }
 
     @GetMapping("/email/{email}")
     public ResponseEntity<CustomerDTO> getCustomerByEmail(@PathVariable String email) {
-        Optional<CustomerDTO> customer = customerSerice.getCustomerByEmail(email);
+        Optional<CustomerDTO> customer = customerService.getCustomerByEmail(email);
         return customer
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -49,7 +49,7 @@ public class CustomerController {
 
     @GetMapping("/dlicense/{licenseNumber}")
     public ResponseEntity<CustomerDTO> getCustomerByLicenseNumber(@PathVariable String licenseNumber) {
-        Optional<CustomerDTO> customer = customerSerice.getCustomerByDriverLicenseNumber(licenseNumber);
+        Optional<CustomerDTO> customer = customerService.getCustomerByDriverLicenseNumber(licenseNumber);
         return customer
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -57,25 +57,25 @@ public class CustomerController {
 
     @GetMapping("/search")
     public ResponseEntity<List<CustomerDTO>> searchCustomers(@RequestParam String name) {
-        List<CustomerDTO> customers = customerSerice.searchCustomerByName(name);
+        List<CustomerDTO> customers = customerService.searchCustomerByName(name);
         return ResponseEntity.ok(customers);
     }
 
     @PostMapping
     public ResponseEntity<CustomerDTO> createCustomer(@Valid @RequestBody CustomerDTO customerDTO) {
-        CustomerDTO savedCustomer = customerSerice.saveCustomer(customerDTO);
+        CustomerDTO savedCustomer = customerService.saveCustomer(customerDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCustomer);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable Long id,@Valid @RequestBody CustomerDTO customerDTO) {
-        CustomerDTO updatedCustomer = customerSerice.updateCustomer(id, customerDTO);
+        CustomerDTO updatedCustomer = customerService.updateCustomer(id, customerDTO);
         return ResponseEntity.ok(updatedCustomer);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<CustomerDTO> deleteCustomer(@PathVariable Long id) {
-        customerSerice.deleteCustomer(id);
+        customerService.deleteCustomer(id);
         return ResponseEntity.noContent().build();
     }
 }
