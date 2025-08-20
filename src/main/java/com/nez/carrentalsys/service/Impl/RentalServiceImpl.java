@@ -154,7 +154,7 @@ public class RentalServiceImpl implements RentalService {
 
     // Filter/Search methods
     @Override
-    public List<RentalDTO> getRentalsByStatus(RentalStatus status) {
+    public List<RentalDTO> getRentalByStatus(RentalStatus status) {
         return rentalRepository
                 .findByStatus(status)
                 .stream()
@@ -196,7 +196,7 @@ public class RentalServiceImpl implements RentalService {
     public boolean isCarAvailable(Long carId, LocalDate startDate, LocalDate endDate) {
         // get all active rentals for this car
         List<Rental> activeRentals = rentalRepository
-                .findByCarIdAndCarStatus(carId, RentalStatus.ACTIVE);
+                .findByCarIdAndCarStatus(carId, CarStatus.AVAILABLE);
 
         return activeRentals
                 .stream()

@@ -17,7 +17,7 @@ public interface RentalService {
     void deleteRental( Long id);
 
     // Filter/Search methods
-    List<RentalDTO> getRentalsByStatus(RentalStatus status);
+    List<RentalDTO> getRentalByStatus(RentalStatus status);
     List<RentalDTO> getRentalByCarId(Long carId);
     List<RentalDTO> getRentalByCustomerId(Long customerId);
     List<RentalDTO> getOverDueRentals();

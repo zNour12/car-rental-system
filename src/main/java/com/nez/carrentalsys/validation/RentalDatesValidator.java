@@ -28,7 +28,7 @@ public class RentalDatesValidator implements ConstraintValidator<ValidRentalDate
         long daysBetween = ChronoUnit.DAYS.between(rentalDTO.getStartDate(), rentalDTO.getEndDate());
         if (daysBetween > 30) {
             context
-                    .buildConstraintViolationWithTemplate("Rental duration must exceed 30 days")
+                    .buildConstraintViolationWithTemplate("Rental duration must not exceed 30 days")
                     .addPropertyNode("endDate")
                     .addConstraintViolation();
             isValid = false;
