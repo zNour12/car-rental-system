@@ -53,8 +53,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public CarDTO updateCar(Long id, CarDTO carDTO) {
-        carDTO.builder()
-                .id(id);
+        carDTO.setId(id);
         Car car = carMapper.toEntity(carDTO);
         Car updatedCar = carRepository.save(car);
         return carMapper.toDTO(updatedCar);
